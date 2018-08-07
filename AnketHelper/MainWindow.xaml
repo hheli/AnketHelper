@@ -1,0 +1,93 @@
+﻿<Window x:Class="AnketHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnketHelper"
+        mc:Ignorable="d"
+        Title="Переименовыватель анкет" Height="800" Width="300" Activated="Window_Activated" Deactivated="Window_Deactivated" ResizeMode="NoResize">
+    <Window.Resources>
+        <local:MyViewModel x:Key="ViewModel" />
+
+    </Window.Resources>
+
+    <Grid>
+        <StackPanel  Margin="10,10,10,10" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
+            <StackPanel.DataContext>
+                <local:MyViewModel/>
+            </StackPanel.DataContext>
+            <Label x:Name="label" Content="Наименование"/>
+            <TextBox x:Name="textBox" Height="23" TextWrapping="NoWrap"  Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label x:Name="label1" Content="ИНН"/>
+            <TextBox x:Name="textBox1" Height="23" TextWrapping="NoWrap" Text="{Binding Inn, UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding InnBackground}" >
+            </TextBox>
+            <Label x:Name="label2" Content="Дата подписания анкеты"/>
+            <DatePicker SelectedDate="{Binding ADate, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Grid>
+                <!-- Устанавливаем две строки -->
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <!-- Устанавливаем три столбца -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <CheckBox Grid.Column="0" Grid.Row="0" x:Name="isKlient" Margin="0,10,0,10" IsChecked="{Binding IsKlient, Mode=TwoWay}" Content="Клиентская"/>
+
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <CheckBox  x:Name="ex1" Margin="10,0,0,0" IsChecked="{Binding ex[0].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}" Content="исключение 1"/>
+                    <CheckBox  x:Name="ex2" Margin="10,0,0,0" IsChecked="{Binding ex[1].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}" Content="исключение 2"/>
+                    <CheckBox x:Name="ex3" Margin="10,0,0,0" IsChecked="{Binding ex[2].val ,Mode=TwoWay}"  IsEnabled="{Binding IsKlient}" Content="исключение 3"/>
+                    <CheckBox x:Name="ex4" Margin="10,0,0,0" IsChecked="{Binding ex[3].val ,Mode=TwoWay}"  IsEnabled="{Binding IsKlient}" Content="исключение 4"/>
+                    <CheckBox x:Name="ex5" Margin="10,0,0,0" IsChecked="{Binding ex[4].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="исключение 5"/>
+                    <CheckBox x:Name="ex6" Margin="10,0,0,0" IsChecked="{Binding ex[5].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="исключение 6"/>
+                    <CheckBox x:Name="ex7" Margin="10,0,0,0" IsChecked="{Binding ex[6].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="исключение 7"/>
+                    <CheckBox x:Name="ex8" Margin="10,0,0,0" IsChecked="{Binding ex[7].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="исключение 8"/>
+                    <CheckBox x:Name="ex9" Margin="10,0,0,0" IsChecked="{Binding ex[8].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="исключение 9"/>
+                    <CheckBox x:Name="ex10" Margin="10,0,0,0" IsChecked="{Binding ex[9].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="исключение 10"/>
+                    <CheckBox x:Name="ex11" Margin="10,0,0,0" IsChecked="{Binding ex[10].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="исключение 11"/>
+                    <CheckBox x:Name="ex12" Margin="10,0,0,0" IsChecked="{Binding ex[11].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="исключение 12"/>
+                    <CheckBox x:Name="ex13" Margin="10,0,0,0" IsChecked="{Binding ex[12].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="исключение 13"/>
+                    <CheckBox x:Name="ex14" Margin="10,0,0,0" IsChecked="{Binding ex[13].val ,Mode=TwoWay}"  IsEnabled="{Binding IsKlient}" Content="исключение 14"/>
+                    <CheckBox x:Name="ex15" Margin="10,0,0,0" IsChecked="{Binding ex[14].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="исключение 15"/>
+                    <CheckBox x:Name="ex16" Margin="10,0,0,0" IsChecked="{Binding ex[15].val ,Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="исключение 16"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="1" >
+                    <CheckBox x:Name="kl1" Margin="10,0,0,0" IsChecked="{Binding kl[0].val , Mode=TwoWay}"  IsEnabled="{Binding IsKlient}" Content="1 критерий"/>
+                    <CheckBox x:Name="kl2" Margin="10,0,0,0" IsChecked="{Binding kl[1].val , Mode=TwoWay}"  IsEnabled="{Binding IsKlient}" Content="2 критерий"/>
+                    <CheckBox x:Name="kl3" Margin="10,0,0,0" IsChecked="{Binding kl[2].val , Mode=TwoWay}"  IsEnabled="{Binding IsKlient}" Content="3 критерий"/>
+                    <CheckBox x:Name="kl4" Margin="10,0,0,0" IsChecked="{Binding kl[3].val , Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="4 критерий"/>
+                    <CheckBox x:Name="kl5" Margin="10,0,0,0" IsChecked="{Binding kl[4].val , Mode=TwoWay}"  IsEnabled="{Binding IsKlient}" Content="5 критерий"/>
+                    <CheckBox x:Name="kl6" Margin="10,0,0,0" IsChecked="{Binding kl[5].val , Mode=TwoWay}"  IsEnabled="{Binding IsKlient}" Content="6 критерий"/>
+                    <CheckBox x:Name="kl7" Margin="10,0,0,0" IsChecked="{Binding kl[6].val , Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="7 критерий"/>
+                    <CheckBox x:Name="kl8" Margin="10,0,0,0" IsChecked="{Binding kl[7].val , Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="8 критерий"/>
+                    <CheckBox x:Name="kl9" Margin="10,0,0,0" IsChecked="{Binding kl[8].val , Mode=TwoWay}"  IsEnabled="{Binding IsKlient}" Content="9 критерий"/>
+                    <CheckBox x:Name="kl10" Margin="10,0,0,0" IsChecked="{Binding kl[9].val , Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="10 критерий"/>
+                    <CheckBox x:Name="kl11" Margin="10,0,0,0" IsChecked="{Binding kl[10].val , Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="11 критерий"/>
+                    <CheckBox x:Name="kl12" Margin="10,0,0,0" IsChecked="{Binding kl[11].val , Mode=TwoWay}" IsEnabled="{Binding IsKlient}"  Content="12 критерий"/>
+                </StackPanel>
+                <CheckBox Grid.Column="0" Grid.Row="2" x:Name="isKredit" Margin="0,10,0,10" IsChecked="{Binding IsKredit, Mode=TwoWay}" Content="Кредитная"/>
+                <StackPanel Grid.Column="1" Grid.Row="3">
+                    <CheckBox x:Name="kr1" Margin="10,0,0,0"  IsChecked="{Binding kr[0].val, Mode=TwoWay}"  IsEnabled="{Binding IsKredit}"  Content="1 критерий"/>
+                    <CheckBox x:Name="kr2" Margin="10,0,0,0" IsChecked="{Binding kr[1].val, Mode=TwoWay}"  IsEnabled="{Binding IsKredit}" Content="2 критерий"/>
+                    <CheckBox x:Name="kr3" Margin="10,0,0,0" IsChecked="{Binding kr[2].val, Mode=TwoWay}"  IsEnabled="{Binding IsKredit}" Content="3 критерий"/>
+                </StackPanel>
+            </Grid>
+            <Label x:Name="label3" Content="Новое название файла"/>
+            <Label x:Name="label4" Content="{Binding PathToSave, Mode=TwoWay}" Height="15" VerticalAlignment="Top" FontSize="11" Padding="7,1,5,0" MouseDoubleClick="label4_MouseDoubleClick"/>
+            <TextBox x:Name="textBox2" Height="46" TextWrapping="Wrap" Text="{Binding NewFileName}" Margin="0,0,0,10"/>
+            <WrapPanel HorizontalAlignment="Center" >
+                <Button x:Name="buttonClear" Content="Сбросить" Command="{Binding ClearBtnClickCommand}" CommandParameter="{Binding}"  Margin="10,0,10,0" Width="76"  />
+                <Button x:Name="button" Content="Сохранить" Command="{Binding SaveBtnClickCommand}" CommandParameter="{Binding}" HorizontalAlignment="Right" Width="124" Margin="3,0,0,0"  />
+
+            </WrapPanel>
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding FileName, Mode=TwoWay}" Margin="0,20,0,38"  AllowDrop="True" Background="#FFFC9F9F" Drop="textBlock_Drop" Height="126"/>
+        </StackPanel>
+    </Grid>
+</Window>
